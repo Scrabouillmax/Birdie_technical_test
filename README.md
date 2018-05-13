@@ -39,4 +39,4 @@ Here is an overview of the application's Redux state shape :
     }
 }
 ```
-education_data, class_of_worker_data are two dimentional arrays corresponding to 
+education_data, class_of_worker_data are two-dimentional arrays corresponding to the table rows and colums (variable, count, average age).
