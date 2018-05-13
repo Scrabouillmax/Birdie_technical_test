@@ -23,9 +23,9 @@ yarn start
 
 ## Architecture
 The React-Redux front-end requests the Node-Express back-end for data. 
-The Express server fetch the informations in the database.
+The Express server fetches the informations in the database.
 
-At start, the list of all the variables is fetched. Then, when the user selects a variable, the corresponding data is fetched and stored in the Redux application state to be displayed. The data for a specific variable is only fetched once.
+When the application starts, the list of all the variables is fetched. Then, when the user selects a variable, the corresponding data is fetched and stored in the Redux application state to be displayed. The data for a specific variable is only fetched once.
 
 Here is an overview of the application's Redux state shape :
 ```js
