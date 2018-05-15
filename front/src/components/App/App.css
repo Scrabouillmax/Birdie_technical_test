@@ -7,3 +7,7 @@
   margin: auto;
   justify-content: space-around;
 }
+p {
+  text-align: left;
+  margin: 10px;
+}
