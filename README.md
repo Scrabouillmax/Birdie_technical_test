@@ -34,9 +34,15 @@ Here is an overview of the application's Redux state shape :
     selectedNRows: 10,
     data: {
         isLoading: false,
-        education: education_data,
-        "class of worker": class_of_worker_data 
+        education: {
+            n_total_lines: 17,
+            education_data
+        }
+        "class of worker": {
+            n_total_lines: 17,
+            class_of_worker_data
+        } 
     }
 }
 ```
-education_data, class_of_worker_data are two-dimentional arrays corresponding to the table rows and colums (variable, count, average age).
+education_data, class_of_worker_data are two-dimentional arrays corresponding to the table rows and colums (variable, count, average age). n_total_lines is the total number of different values for the corresponding variable in the database.
