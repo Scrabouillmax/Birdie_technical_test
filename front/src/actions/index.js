@@ -39,7 +39,7 @@ export const fetchVariableData = (variable) => {
     // the middleware calls that function with store.dispatch and store.getState
     return (dispatch, getState) => {
         // check if the states already contains the variable's data
-        let data = getState().data.data[variable];
+        let data = getState().data[variable];
         if (!data){
             // if not, fetch the data :
             dispatch(requestingVariableData(variable))

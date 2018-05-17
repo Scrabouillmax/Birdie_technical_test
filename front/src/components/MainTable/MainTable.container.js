@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import MainTable from './MainTable.presentational';
 
 const mapStateToProps = state => {
+    console.log(state);
     let content = [[]];
     let n_total_lines = 0;
-    // retrieve content for variable if it is saved in the app state
-    if (JSON.stringify(state.data.data)!==JSON.stringify({})){
-        content = state.data.data[state.selectedVariable].content;
-        n_total_lines = state.data.data[state.selectedVariable].n_total_lines;
+    // retrieve content for variable if there is a selected variable
+    if(state.selectedVariable){
+        content = state.data[state.selectedVariable].content;
+        n_total_lines = state.data[state.selectedVariable].n_total_lines;
     }
     return ({
         // number of rows to display
