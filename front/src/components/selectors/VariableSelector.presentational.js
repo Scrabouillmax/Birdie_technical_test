@@ -17,10 +17,10 @@ class VariableSelector extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
+  static getDerivedStateFromProps(nextProps) {
+    return {
       items: nextProps.items,
-    });
+    };
   }
 
   render() {

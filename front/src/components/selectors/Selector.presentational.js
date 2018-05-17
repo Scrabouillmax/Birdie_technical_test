@@ -28,10 +28,10 @@ export default class Selector extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
+  static getDerivedStateFromProps(nextProps) {
+    return {
       items: nextProps.items,
-    });
+    };
   }
 
     onItemSelect = (item) => {

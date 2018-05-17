@@ -20,16 +20,20 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false,
-      selectedVariable: null,
+      isLoading: props.isLoading,
+      selectedVariable: props.selectedVariable,
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.isLoading === prevState.isLoading &&
+      nextProps.selectedVariable === prevState.selectedVariable) {
+      return null;
+    }
+    return {
       isLoading: nextProps.isLoading,
       selectedVariable: nextProps.selectedVariable,
-    });
+    };
   }
 
   render() {

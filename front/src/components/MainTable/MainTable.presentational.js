@@ -22,13 +22,13 @@ class MainTable extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      variable: nextProps.variable || this.state.variable,
-      content: nextProps.content || this.state.content,
-      n_rows: nextProps.n_rows || this.state.n_rows,
-      n_total_lines: nextProps.n_total_lines || this.state.n_total_lines,
-    });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      variable: nextProps.variable || prevState.variable,
+      content: nextProps.content || prevState.content,
+      n_rows: nextProps.n_rows || prevState.n_rows,
+      n_total_lines: nextProps.n_total_lines || prevState.n_total_lines,
+    };
   }
 
   render() {
