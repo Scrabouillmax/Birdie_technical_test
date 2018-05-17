@@ -7,9 +7,9 @@ export const changeVariable = newVariable => ({
   variable: newVariable,
 });
 
-export const changeNRows = n_rows => ({
+export const changeNRows = nRows => ({
   type: actionTypes.CHANGE_N_ROWS,
-  n_rows,
+  nRows,
 });
 
 export const receiveVariableData = (variable, data) => ({

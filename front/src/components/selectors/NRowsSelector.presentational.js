@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Selector from './Selector.presentational';
 
@@ -12,5 +13,10 @@ const NRowsSelector = props => (
     onItemSelect={props.onItemSelect}
   />
 );
+
+NRowsSelector.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.number).isRequired,
+  onItemSelect: PropTypes.func.isRequired,
+};
 
 export default NRowsSelector;

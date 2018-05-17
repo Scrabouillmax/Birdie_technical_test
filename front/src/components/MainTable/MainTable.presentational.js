@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 
 import TableBody from './TableBody.presentational';
 
-export default class MainTable extends Component {
+class MainTable extends Component {
+  static propTypes = {
+    variable: PropTypes.string.isRequired,
+    content: PropTypes.arrayOf(PropTypes.array.isRequired).isRequired,
+    n_rows: PropTypes.number.isRequired,
+    n_total_lines: PropTypes.number.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -44,3 +51,5 @@ export default class MainTable extends Component {
     );
   }
 }
+
+export default MainTable;

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Row from './TableRow.presentational';
 
-export default ({ tableContent, n_rows }) => (
+const TableBody = ({ tableContent, n_rows }) => (
   <tbody>
     {
     // map over each Row
@@ -14,3 +15,10 @@ export default ({ tableContent, n_rows }) => (
       />))}
   </tbody>
 );
+
+TableBody.propTypes = {
+  tableContent: PropTypes.arrayOf(PropTypes.array.isRequired).isRequired,
+  n_rows: PropTypes.number.isRequired,
+};
+
+export default TableBody;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Well } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import MainTable from '../MainTable/MainTable.container';
 import VariableSelector from '../selectors/VariableSelector.container';
@@ -7,6 +8,15 @@ import NRowsSelector from '../selectors/NRowsSelector.container';
 import './App.css';
 
 export default class App extends Component {
+  static propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    selectedVariable: PropTypes.string,
+  };
+
+  static defaultProps = {
+    selectedVariable: null,
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +33,12 @@ export default class App extends Component {
   }
 
   render() {
+    let body;
+    if (this.state.selectedVariable) {
+      body = this.state.isLoading ? <p>Loading...</p> : <MainTable />;
+    } else {
+      body = <p> Please select a variable to display informations </p>;
+    }
     return (
       <div>
         <h1>Technical test Birdie</h1>
@@ -38,12 +54,7 @@ export default class App extends Component {
             />
           </Well>
         </div>
-        {
-          this.state.selectedVariable ?
-            this.state.isLoading ? <p>Loading...</p> : <MainTable />
-          :
-            <p> Please select a variable to display informations </p>
-        }
+        {body}
       </div>
     );
   }

@@ -1,33 +1,38 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import VariableSelector from './VariableSelector.presentational';
 import { changeVariable, fetchVariableData } from '../../actions';
 
 class VariableSelectorContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-    };
-  }
+    static propTypes = {
+      onItemSelect: PropTypes.func.isRequired,
+    }
+    constructor(props) {
+      super(props);
+      this.state = {
+        items: [],
+      };
+    }
 
-  componentDidMount() {
-    fetch('/variables')
-      .then(data => data.json())
-      .then((data) => {
-        this.setState({ items: data });
-      });
-  }
+    componentDidMount() {
+      // eslint-disable-next-line
+      fetch('/variables')
+        .then(data => data.json())
+        .then((data) => {
+          this.setState({ items: data });
+        });
+    }
 
-  render() {
-    return (
-      <VariableSelector
-        items={this.state.items}
-        onItemSelect={this.props.onItemSelect}
-      />
-    );
-  }
+    render() {
+      return (
+        <VariableSelector
+          items={this.state.items}
+          onItemSelect={this.props.onItemSelect}
+        />
+      );
+    }
 }
 
 const mapDispatchToProps = dispatch => ({
