@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 import TableBody from './TableBody.presentational';
 
 export default class MainTable extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       variable: props.variable,
       content: props.content,
       n_rows: props.n_rows,
-      n_total_lines: props.n_total_lines
-    }
+      n_total_lines: props.n_total_lines,
+    };
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      variable: nextProps.variable||this.state.variable,
-      content: nextProps.content||this.state.content,
-      n_rows: nextProps.n_rows||this.state.n_rows,
-      n_total_lines: nextProps.n_total_lines||this.state.n_total_lines 
-    })
+      variable: nextProps.variable || this.state.variable,
+      content: nextProps.content || this.state.content,
+      n_rows: nextProps.n_rows || this.state.n_rows,
+      n_total_lines: nextProps.n_total_lines || this.state.n_total_lines,
+    });
   }
 
   render() {
@@ -33,7 +33,7 @@ export default class MainTable extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>{this.state.variable||"Variable"}</th>
+              <th>{this.state.variable || 'Variable'}</th>
               <th>Count</th>
               <th>Average Age</th>
             </tr>
@@ -41,6 +41,6 @@ export default class MainTable extends Component {
           <TableBody tableContent={this.state.content} n_rows={this.state.n_rows} />
         </Table>
       </div>
-      );
+    );
   }
 }

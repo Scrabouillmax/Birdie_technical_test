@@ -7,41 +7,40 @@ import NRowsSelector from '../selectors/NRowsSelector.container';
 import './App.css';
 
 export default class App extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       isLoading: false,
-      selectedVariable: null
-    }
+      selectedVariable: null,
+    };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
       isLoading: nextProps.isLoading,
-      selectedVariable: nextProps.selectedVariable
-    })
+      selectedVariable: nextProps.selectedVariable,
+    });
   }
-  
+
   render() {
     return (
       <div>
         <h1>Technical test Birdie</h1>
-          <div className="container">
-            <Well >
-              <p>Select a variable : </p>
-              <VariableSelector />
-            </Well>
-            <Well >
-              <p>Max number of rows to display : </p>
-              <NRowsSelector 
-                items={[5, 10, 20, 50, 100]}
-              />
-            </Well>
-          </div>
+        <div className="container">
+          <Well >
+            <p>Select a variable : </p>
+            <VariableSelector />
+          </Well>
+          <Well >
+            <p>Max number of rows to display : </p>
+            <NRowsSelector
+              items={[5, 10, 20, 50, 100]}
+            />
+          </Well>
+        </div>
         {
-          this.state.selectedVariable ? 
-            this.state.isLoading ? <p>Loading...</p> : <MainTable /> 
+          this.state.selectedVariable ?
+            this.state.isLoading ? <p>Loading...</p> : <MainTable />
           :
             <p> Please select a variable to display informations </p>
         }
