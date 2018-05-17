@@ -11,13 +11,15 @@ export default class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      isLoading: false
+      isLoading: false,
+      selectedVariable: null
     }
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      isLoading: nextProps.isLoading
+      isLoading: nextProps.isLoading,
+      selectedVariable: nextProps.selectedVariable
     })
   }
   
@@ -38,10 +40,11 @@ export default class App extends Component {
             </Well>
           </div>
         {
-          // don't show the table if we are currently fetching data
-          !this.state.isLoading&&<MainTable />
+          this.state.selectedVariable ? 
+            this.state.isLoading ? <p>Loading...</p> : <MainTable /> 
+          :
+            <p> Please select a variable to display informations </p>
         }
-        {this.state.isLoading&&<p>Loading...</p>}
       </div>
     );
   }
