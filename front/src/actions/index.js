@@ -12,8 +12,9 @@ export const changeNRows = nRows => ({
   nRows,
 });
 
-export const receiveVariableData = (variable, data) => ({
+export const receiveVariableData = (err, variable, data) => ({
   type: actionTypes.RECEIVE_VARIABLE_DATA,
+  err,
   variable,
   data,
   receivedAt: Date.now(),
@@ -37,9 +38,14 @@ export const fetchVariableData = variable =>
       dispatch(requestingVariableData(variable));
       return fetch(`/info/${variable}`)
         .then(res => res.json())
-        .then((res) => {
-          dispatch(receiveVariableData(variable, res));
-        });
+        .then(
+          (res) => {
+            dispatch(receiveVariableData(null, variable, res));
+          },
+          (err) => {
+            dispatch(receiveVariableData(err, variable, null));
+          },
+        );
     }
     return data;
   };

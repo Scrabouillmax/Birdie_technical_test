@@ -10,6 +10,7 @@ import './App.css';
 export default class App extends Component {
   static propTypes = {
     isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
     selectedVariable: PropTypes.string,
   };
 
@@ -21,6 +22,7 @@ export default class App extends Component {
     super(props);
     this.state = {
       isLoading: props.isLoading,
+      error: props.error,
       selectedVariable: props.selectedVariable,
     };
   }
@@ -32,6 +34,7 @@ export default class App extends Component {
     }
     return {
       isLoading: nextProps.isLoading,
+      error: nextProps.error,
       selectedVariable: nextProps.selectedVariable,
     };
   }
@@ -39,7 +42,11 @@ export default class App extends Component {
   render() {
     let body;
     if (this.state.selectedVariable) {
-      body = this.state.isLoading ? <p>Loading...</p> : <MainTable />;
+      if (this.state.error) {
+        body = <p>An error occured, please retry.</p>;
+      } else {
+        body = this.state.isLoading ? <p>Loading...</p> : <MainTable />;
+      }
     } else {
       body = <p> Please select a variable to display informations </p>;
     }
